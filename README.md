@@ -1,5 +1,9 @@
 # ckanext-dcat
 
+> Fork of [ckan/ckanext-dcat](https://github.com/ckan/ckanext-dcat) tested against
+> [CKAN with PostgreSQL only](https://ckanito.cluster311.com) (no Solr, no Redis).
+
+
 
 [![Tests](https://github.com/ckan/ckanext-dcat/actions/workflows/test.yml/badge.svg)](https://github.com/ckan/ckanext-dcat/actions)
 

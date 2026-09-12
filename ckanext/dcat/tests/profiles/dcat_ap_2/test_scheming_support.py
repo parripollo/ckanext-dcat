@@ -1041,11 +1041,11 @@ class TestSchemingIndexFields:
             ],
         }
 
-        with mock.patch("ckan.lib.search.index.make_connection") as m:
+        with mock.patch("ckan.lib.search.index.get_backend") as m:
             call_action("package_create", **dataset_dict)
 
-            # Dict sent to Solr
-            search_dict = m.mock_calls[1].kwargs["docs"][0]
+            # Dict handed to the search backend
+            search_dict = m.return_value.index.call_args[0][0]
             assert search_dict["extras_contact__name"] == "Contact 1 Contact 2"
             assert (
                 search_dict["extras_contact__email"]
@@ -1106,11 +1106,11 @@ class TestSchemingIndexFields:
             ],
         }
 
-        with mock.patch("ckan.lib.search.index.make_connection") as m:
+        with mock.patch("ckan.lib.search.index.get_backend") as m:
             call_action("package_create", **dataset_dict)
 
-            # Dict sent to Solr
-            search_dict = m.mock_calls[1].kwargs["docs"][0]
+            # Dict handed to the search backend
+            search_dict = m.return_value.index.call_args[0][0]
             assert search_dict["spatial"] == json.dumps(
                 dataset_dict["spatial_coverage"][0]["centroid"]
             )
