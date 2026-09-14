@@ -1,7 +1,7 @@
 # ckanext-dcat
 
 > Fork of [ckan/ckanext-dcat](https://github.com/ckan/ckanext-dcat) tested against
-> [CKAN with PostgreSQL only](https://ckanito.cluster311.com) (no Solr, no Redis).
+> [CKAN with PostgreSQL only](https://ckan.cbadatos.com.ar) (no Solr, no Redis).
 
 
 
