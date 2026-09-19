@@ -243,6 +243,13 @@ class TestEndpoints:
 
         app.get(url, status=404)
 
+    def test_dataset_unknown_format(self, app):
+        dataset = factories.Dataset()
+
+        url = url_for("dcat.read_dataset", _id=dataset["name"], _format="js")
+
+        app.get(url, status=404)
+
     def test_dataset_form_is_rendered(self, app):
         sysadmin = factories.SysadminWithToken()
         headers = {"Authorization": sysadmin["token"]}
@@ -451,6 +458,12 @@ class TestEndpoints:
         response = app.get(url, status=409)
 
         assert "Unknown RDF profiles: nope" in response.body
+
+    def test_catalog_unknown_format(self, app):
+
+        url = url_for("dcat.read_catalog", _format="js")
+
+        app.get(url, status=404)
 
 
 @pytest.mark.usefixtures("with_plugins", "clean_db", "clean_index")

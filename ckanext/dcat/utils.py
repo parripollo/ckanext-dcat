@@ -394,6 +394,9 @@ def dcat_json_page():
 
 
 def read_dataset_page(_id, _format):
+    if _format and _format not in CONTENT_TYPES:
+        toolkit.abort(404)
+
     if not _format:
         _format = check_access_header()
 
@@ -421,6 +424,9 @@ def read_dataset_page(_id, _format):
     return response
 
 def read_catalog_page(_format):
+    if _format and _format not in CONTENT_TYPES:
+        toolkit.abort(404)
+
     if not _format:
         _format = check_access_header()
 
